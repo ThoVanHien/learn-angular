@@ -3,9 +3,9 @@
   <form action="" (ngSubmit)="changDetail(detailForm)" #detailForm="ngForm">
     <div class="form-group">
       <label for="productCode">Product Code:</label>
+      <!-- value="{{product.productCode}}" one-way--> 
       <input
-        ngModel
-        value="{{ product.productCode }}"
+        [(ngModel)]="product.productCode"
         type="text"
         class="form-control"
         name="productCode"

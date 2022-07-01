@@ -12,6 +12,9 @@ export class ProductListComponent implements OnInit {
     new Product('P02', 'Galaxy S19'),
   ];
   constructor() {}
+  changeStarRating(message: string) {
+    console.log(`Message:${message}`);
+  }
 
   ngOnInit() {}
 }
