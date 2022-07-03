@@ -1,27 +1,105 @@
-# Lesson01
+# Lesson01 https://github.com/gopinav/Angular-Tutorials
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
+## Property binding (actually binding to the DOM)
+- DOM - property : can
+- HTML- attributes : not
+- Attributes initialize DOM properties and then they are done. Attributes cannot change once they are initialized
+- Property can change
+- HTML attribute value specifies the initial value and the DOM value property is the current value.
+- Property binding : [id] = "variable can boolean" || bind-disabled="variable can boolean" || value = "{{Interpolation}}"
+- Have a problem with boolean attribute: cannot use interpolation that can use 2 two ways remains
 
-## Development server
+## Class binding 
+- Can not use both property and attribute(angular 5) but now is working both
+- Class binding conditional : [class.class-name-css] = "variable can boolean" 
+- Multi class : [ngClass] = "variable obj"
+- Obj {"key":value is boolean variable}
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Style binding
+- Style binding conditional: [style.properties-of-style]="'adj'" || "variable ? 'adj1' : 'adj2'" || "variabled"
+- Multi style: [ngStyle]="obj" // obj={property of style : 'adj'}
 
-## Code scaffolding
+## Event binding (Class ---data biding--> Template ---event binding-->Class)
+- (event)="func()"
+- (event)="variabled = 'value is string'" || "assgin = value"
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Template Reference Variables
+- Assgin variable name with # on a element : this variable is instance of this element
+- Use on parameter for event binding...
 
-## Build
+## Two way binding(Class(public a,public b) ---data biding--> Template(input a, input b) ---event binding-->Class(public a,public b))
+- Sync/consistent class and template
+- [(ngModel)]="variable"
+- Remind import FormModule in import's modules.ts
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Structural Directives
+-Add or remove HTML elements from the DOM
++ ngIf
+  *ngIf = "truthy variabled, else templateRefVar" || "falsy variabled; else #templateRefVar" else block use ng-template
+  *ngIf = "truthy variabled, then templateRefVar1; else templateRefVar1" noited that this way apply for ng-template
+	
++ ngSwitch
+  [ngSwitch] = 'variabled' 
+	*ngSwitchCase="'value'"
+	*ngSwitchDefaulut
++ ngFor
+  *ngFor="let x of y; index as i; first as f; last as l; odd as o' even as e" and use {{Interpolation}} to render x 
 
-## Running unit tests
+## Component interaction (childComponent ---data @Output---> parentComponent ---data @Input---> childComponent)
+- Send data from the parent to the child: 
+  + step1: declare a property(variable)
+  + step2: in template of parent declare selector's child component
+  + step3: binding it to the child selector .Ex: [parentDataFromVariableOfChild]='variable of parent'
+  + step4: in child declare property with @input('parentDataFromVariableOfChild') public variable of parent || alias decorator
+  + step5: use it with binding property
+- Send data from the child to the parent:
+  * The way-1
+    + step1: in child component declare instance of the event; Ex: @Ouput() public childEvent = new EventEmitter()
+    + step2: in template child create event binding to emit event output; Ex: this.child.emit('value')
+    + step3: in template of parent declare event of selector child to variabled of parent pick it up; Ex: (childEven)="message=$paramOfChild"
+  * The way-2
+    + step1: in parent component @ViewChild(name-child-component) child;
+    + step2: implement ViewChild is ngAfterViewInit()
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Pipes: Format ONLY VIEW 
 
-## Running end-to-end tests
+## Service
+-Principles:
+ + DRY(Do not repear yourself)
+ + Single responsibility principle
+-Service:
+ + A class with a specific purpose
+   1.Share data across multiple components 
+   2.Implement application logic
+   3.External Interaction
+-Naming convention -.service.ts
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Dependency Injection
+- DI as a design pattern
+- DI as a framework that angular provides
+   1.Define the EmployeeService class
+   2.Register with Injector
+   3.Declare as dependency in EmpList and EmpDetail 
+- Code without DI - drawbacks
+## Using a Service
+- Hierarchical DI in Angular : register at app module level
+- Step by step
+  + step1: declare name service in providers of app.modules 
+  + step2: import HttpClientModule in import of app.modules 
+  + step3: DI HttpClient on constructor of -.service.ts
+  + step4: this.http.get<I same data return[]>(this.url) //cast json to ts type
+  + step5: DI service and then this._service.func().subscribe(data=>variable = data) 
 
-## Further help
+## Routing and Navigation
+- Step by step
+  + step1: add base tag have href='/'
+  + step2: app-routing: add path and components, should import all components and export them of it. This best practice
+  + step3: <router-outlet></> where component will render below.
+  + step4: config routerLlink for a,button tag
+- path,redirecTo,pathMatch: full|prefix
+	  
+https://github.com/gopinav/Angular-Tutorials
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+
