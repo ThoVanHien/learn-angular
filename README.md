@@ -102,5 +102,7 @@ https://github.com/gopinav/Angular-Tutorials
 
 https://stackblitz.com/edit/angular-search-text-highlight-directive?file=src%2Fapp%2Fhighlight.directive.ts
 
+https://github.com/mooalot/alphabetical-scroll-bar/tree/main/projects/example
+
 
 
