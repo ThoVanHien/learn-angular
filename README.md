@@ -72,6 +72,6 @@ npm i @angular/cli -g
 - i18n
 - Accessibility
 
-
+https://github.com/rickymerrefield/javascript_bit_converter/blob/master/bit_converter.js
 
 
